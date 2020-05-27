@@ -78,6 +78,10 @@ const urlParams = new URLSearchParams(queryString);
 const id = urlParams.get('id')
 const headTitle = urlParams.get('title')
 
+if (!id){
+  window.location = "/create.html"
+}
+
 document.getElementById('YouTubeiFrame').src = "https://www.youtube.com/embed/"+id+"?autoplay=1&controls=0";
 document.getElementById('headTitle').innerHTML = headTitle;
 document.title = headTitle;
