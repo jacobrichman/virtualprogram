@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html>
+<title>Virtual Program</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
 
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding-8 w3-card">
+    <center><h1>Virtual Program</h1></center>
+  </div>
+</div>
+
+<!-- Page content -->
+<div class="w3-content w3-padding" style="max-width:1564px; margin-top:50px">
+
+
+  <!-- Contact Section -->
+  <div class="w3-container w3-padding-32" id="contact">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Create</h3>
+    <p>Please enter the info below to create your virtual program link.</p>
+    <form onsubmit="return formDone()">
+      <input id="formName" class="w3-input w3-border" type="text" placeholder="Event Name" required name="Name">
+      <input id="formYouTube" class="w3-input w3-section w3-border" type="text" placeholder="YouTube URL" required name="Email">
+      <button class="w3-button w3-black w3-section" type="submit">
+        <i class="fa fa-paper-plane"></i>Create
+      </button>
+    </form>
+    <p><input hidden style="width: 700px" type="text" value="" id="outputURLforCopy"> <button id="copyButton" hidden onclick="copyText()">Copy</button></p>
+  </div>
+
+<!-- End page content -->
+</div>
+
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-16">
+  <p>Made by Jacob Richman</p>
+</footer>
+
+<script>
+function formDone() {
+  var formName = document.getElementById("formName").value;
+  var formYouTube = document.getElementById("formYouTube").value;
+  var formYouTubeID = youtube_parser(formYouTube)
+  if (formName != "" && formYouTubeID) {
+    var newURL = "https://virtualprogram.org?id="+formYouTubeID+"&title="+encodeURI(formName)
+    document.getElementById("outputURLforCopy").value = newURL
+    document.getElementById("outputURLforCopy").hidden = false
+    document.getElementById("copyButton").hidden = false
+  }
+  else{
+    alert("Form data was invalid.")
+  }
+
+  return false
+}
+
+function youtube_parser(url){
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+    var match = url.match(regExp);
+    return (match&&match[7].length==11)? match[7] : false;
+}
+
+function copyText() {
+  var copyText = document.getElementById("outputURLforCopy");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  alert("Copied to clipboard");
+}
+</script>
+
+</body>
+</html>
