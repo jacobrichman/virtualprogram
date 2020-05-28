@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 .overlay {
   height: 100%;
@@ -12,11 +13,12 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: rgba(0,0,0, 0.0);
+  background-color: rgba(0,0,0, 0.8);
 }
 .aipacOverlay{
-  background-color: rgba(0,0,0, 1) !important;
+  background-color: rgba(0,0,0, .8) !important;
   height: 54px;
+  color: white !important;
 }
 .aipacBlue{
   background: linear-gradient(to right, rgba(255,255,255,0.5), rgba(44,191,241,0.5));
@@ -32,7 +34,9 @@
 <!-- Navbar (sit on top) -->
 
 <div class="w3-top" style="z-index: 3; position: absolue;">
-  <div class="w3-bar w3-white w3-wide w3-padding-8 w3-card aipacBlue">
+  <div id="topBar" class="w3-bar w3-white w3-wide w3-padding-8 w3-card aipacBlue">
+    <button onclick="lightClicked()" style="height: 54px; width: 54px;" class="w3-bar-item w3-button"><i class="fa fa-lightbulb-o fa-2x" aria-hidden="true"></i></button>
+
       <div id="headTitle" style="text-align:center; font-size: 30px; padding-top: 4px;"></div>
   </div>
 </div>
@@ -67,11 +71,22 @@
   <p>Made by Jacob Richman</p>
 </footer>
 
-<div class="overlay">
+<div id="overlay" hidden class="overlay">
 
 
 <script src='https://meet.jit.si/external_api.js'></script>
 <script>
+
+function lightClicked(){
+  if(document.getElementById("overlay").hidden){
+    document.getElementById("topBar").className= "w3-bar w3-white w3-wide w3-padding-8 w3-card aipacOverlay";
+    document.getElementById("overlay").hidden = false
+  }
+  else{
+    document.getElementById("topBar").className = "w3-bar w3-white w3-wide w3-padding-8 w3-card aipacBlue";
+    document.getElementById("overlay").hidden = true
+  }
+}
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
