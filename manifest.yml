@@ -1,3 +1,5 @@
 ---
 applications:
  - name: virtual-program-jr
+   random-route: true
+   memory: 128M
