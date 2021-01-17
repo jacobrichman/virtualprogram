@@ -1,6 +1,7 @@
 ---
 applications:
 - name: virtual-program
+  buildpack: nginx_buildpack
   routes:
   - route: virtualprogram.org
   - route: www.virtualprogram.org
