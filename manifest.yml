@@ -1,5 +1,7 @@
 ---
 applications:
- - name: virtual-program-jr
-   random-route: true
+ - name: virtual-program
+    routes:
+    - route: virtualprogram.org
+    - route: www.virtualprogram.org
    memory: 128M
