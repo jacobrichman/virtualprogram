@@ -1,7 +1,7 @@
 ---
 applications:
- - name: virtual-program
-    routes:
-    - route: virtualprogram.org
-    - route: www.virtualprogram.org
-   memory: 128M
+- name: virtual-program
+  routes:
+  - route: virtualprogram.org
+  - route: www.virtualprogram.org
+  memory: 128M
