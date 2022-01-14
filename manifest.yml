@@ -5,4 +5,4 @@ applications:
   routes:
   - route: virtualprogram.org
   - route: www.virtualprogram.org
-  memory: 32M
+  memory: 16M
